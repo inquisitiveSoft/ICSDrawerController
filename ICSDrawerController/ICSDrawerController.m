@@ -28,7 +28,7 @@
 static const CGFloat kICSDrawerControllerDrawerDepth = 260.0f;
 static const CGFloat kICSDrawerControllerLeftViewInitialOffset = -60.0f;
 static const NSTimeInterval kICSDrawerControllerAnimationDuration = 0.5;
-static const CGFloat kICSDrawerControllerOpeningAnimationSpringDamping = 0.7f;
+static const CGFloat kICSDrawerControllerOpeningAnimationSpringDamping = 0.8f;
 static const CGFloat kICSDrawerControllerOpeningAnimationSpringInitialVelocity = 0.1f;
 static const CGFloat kICSDrawerControllerClosingAnimationSpringDamping = 1.0f;
 static const CGFloat kICSDrawerControllerClosingAnimationSpringInitialVelocity = 0.5f;
