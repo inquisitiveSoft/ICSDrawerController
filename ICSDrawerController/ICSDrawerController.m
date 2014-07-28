@@ -369,16 +369,14 @@ typedef NS_ENUM(NSUInteger, ICSDrawerControllerState)
 
 - (void)open
 {
-    NSParameterAssert(self.drawerState == ICSDrawerControllerStateClosed);
-
-    [self willOpen];
-    
-    [self animateOpening];
+    if(self.drawerState != ICSDrawerControllerStateOpen) {
+		[self willOpen];
+		[self animateOpening];
+	}
 }
 
 - (void)willOpen
 {
-    NSParameterAssert(self.drawerState == ICSDrawerControllerStateClosed);
     NSParameterAssert(self.leftView);
     NSParameterAssert(self.centerView);
     NSParameterAssert(self.leftViewController);
@@ -412,7 +410,6 @@ typedef NS_ENUM(NSUInteger, ICSDrawerControllerState)
 
 - (void)didOpen
 {
-    NSParameterAssert(self.drawerState == ICSDrawerControllerStateOpening);
     NSParameterAssert(self.leftViewController);
     NSParameterAssert(self.centerViewController);
     
@@ -437,16 +434,12 @@ typedef NS_ENUM(NSUInteger, ICSDrawerControllerState)
 
 - (void)close
 {
-    NSParameterAssert(self.drawerState == ICSDrawerControllerStateOpen);
-
     [self willClose];
-
     [self animateClosing];
 }
 
 - (void)willClose
 {
-    NSParameterAssert(self.drawerState == ICSDrawerControllerStateOpen);
     NSParameterAssert(self.leftViewController);
     NSParameterAssert(self.centerViewController);
     
@@ -467,7 +460,6 @@ typedef NS_ENUM(NSUInteger, ICSDrawerControllerState)
 
 - (void)didClose
 {
-    NSParameterAssert(self.drawerState == ICSDrawerControllerStateClosing);
     NSParameterAssert(self.leftView);
     NSParameterAssert(self.centerView);
     NSParameterAssert(self.leftViewController);
@@ -493,6 +485,22 @@ typedef NS_ENUM(NSUInteger, ICSDrawerControllerState)
         [self.centerViewController drawerControllerDidClose:self];
     }
 }
+
+
+- (void)toggleDrawer
+{
+	switch (self.drawerState) {
+		case ICSDrawerControllerStateClosed:
+		case ICSDrawerControllerStateClosing:
+			[self open];
+			break;
+		
+		default:
+			[self close];
+			break;
+	}
+}
+
 
 #pragma mark - Reloading/Replacing the center view controller
 

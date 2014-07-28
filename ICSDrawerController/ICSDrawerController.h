@@ -110,6 +110,7 @@
  Typically, you call this method as a result of tapping on a button in your center view controller.
  */
 - (void)open;
+
 /**
  Closes the drawer.
 
@@ -119,6 +120,17 @@
  From the user's point of view, the result of calling this method is the same of tapping on the center view controller to close it.
  */
 - (void)close;
+
+/**
+ Toggles the drawer.
+
+ Call this method when you want to programmatically close the drawer.
+ Typically, this is the case of a tap in the left view controller leading to exactly the same center view controller currently shown.
+
+ From the user's point of view, the result of calling this method is the same of tapping on the center view controller to close it.
+ */
+- (void)toggleDrawer;
+
 /**
  Reloads the current center view controller and then closes the drawer.
  
