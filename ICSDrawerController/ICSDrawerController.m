@@ -190,7 +190,7 @@ typedef NS_ENUM(NSUInteger, ICSDrawerControllerState)
     CGPoint velocity = [panGestureRecognizer velocityInView:self.view];
     CGPoint startPosition = [panGestureRecognizer locationInView:self.view];
     
-    if(self.drawerState == ICSDrawerControllerStateClosed && velocity.x > 0.0f && startPosition.x < 35.0) {
+	if(self.drawerState == ICSDrawerControllerStateClosed && velocity.x > 0.0f && (startPosition.x < 25.0 || [[gestureRecognizer view] isKindOfClass:[UIButton class]])) {
         return YES;
     }
     else if (self.drawerState == ICSDrawerControllerStateOpen && velocity.x < 0.0f) {
