@@ -185,9 +185,12 @@ typedef NS_ENUM(NSUInteger, ICSDrawerControllerState)
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
 {
     NSParameterAssert([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]);
-    CGPoint velocity = [(UIPanGestureRecognizer *)gestureRecognizer velocityInView:self.view];
+	UIPanGestureRecognizer *panGestureRecognizer =  (UIPanGestureRecognizer *)gestureRecognizer;
+	
+    CGPoint velocity = [panGestureRecognizer velocityInView:self.view];
+    CGPoint startPosition = [panGestureRecognizer locationInView:self.view];
     
-    if (self.drawerState == ICSDrawerControllerStateClosed && velocity.x > 0.0f) {
+    if(self.drawerState == ICSDrawerControllerStateClosed && velocity.x > 0.0f && startPosition.x < 35.0) {
         return YES;
     }
     else if (self.drawerState == ICSDrawerControllerStateOpen && velocity.x < 0.0f) {
