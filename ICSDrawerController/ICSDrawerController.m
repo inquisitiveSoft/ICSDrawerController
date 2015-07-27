@@ -106,7 +106,7 @@ typedef NS_ENUM(NSUInteger, ICSDrawerControllerState)
     
     // Initialize left and center view containers
     self.leftView = [[UIView alloc] initWithFrame:self.view.bounds];
-    self.centerView = [[ICSDropShadowView alloc] initWithFrame:self.view.bounds];    
+    self.centerView = [[UIView alloc] initWithFrame:self.view.bounds];
     self.leftView.autoresizingMask = self.view.autoresizingMask;
     self.centerView.autoresizingMask = self.view.autoresizingMask;
     
