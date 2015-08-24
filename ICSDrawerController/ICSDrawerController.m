@@ -49,7 +49,7 @@ typedef NS_ENUM(NSUInteger, ICSDrawerControllerState)
 @property(nonatomic, strong, readwrite) UIViewController<ICSDrawerControllerChild, ICSDrawerControllerPresenting> *centerViewController;
 
 @property(nonatomic, strong) UIView *leftView;
-@property(nonatomic, strong) ICSDropShadowView *centerView;
+@property(nonatomic, strong) UIView *centerView;
 
 @property(nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
 @property(nonatomic, strong) UIPanGestureRecognizer *panGestureRecognizer;
